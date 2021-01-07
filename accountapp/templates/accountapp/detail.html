@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <div style = 'text-align: center; max-width: 500px; margin: 4rem auto;'>
+
+
+            {% if target_user.profile %}
+            <img src="{{ target_user.profile.image.url }}" alt="" style="height: 10rem; width: 10rem; border-radius: 12rem; margin-bottom: 2rem; object-fit: cover;">
+            <h2 style="font-family: 'NanumSquareRoundR'">
+                {{ target_user.profile.nickname }}
+                {% if target_user == user %}
+                <a class="material-icons"
+                   style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
+                href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+                    edit
+                </a>
+                {% endif %}
+            </h2>
+            <h5 style="margin-bottom:3rem;">
+                {{ target_user.profile.message }}
+            </h5>
+            {% else %}
+                {% if target_user == user %}
+                <a href="{% url 'profileapp:create' %}">
+                    <h2 style="font-family: 'NanumSquareRoundR'">
+                    Create Profile
+                    </h2>
+                </a>
+                {% endif %}
+            <h2>
+                Please make your profile.
+            </h2>
+            {% endif %}
+
+
+            {% if target_user == user %}
+            <a class="material-icons"
+               style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
+                    href = "{% url 'accountapp:update' pk=target_user.pk %}">
+
+                    settings
+
+            </a>
+            <p>
+            <a href = "{% url 'accountapp:delete' pk=target_user.pk %}" class="btn btn-danger rounded-pill mt-3 mb-3 px-3">
+
+                    Delete Account
+
+            </a>
+            </p>
+            {% endif %}
+
+<!--            <div>-->
+
+<!--                {% include 'snippets/list_fragment.html' with article_list=object_list %}-->
+
+<!--            </div>-->
+
+        </div>
+    </div>
+
+{% endblock %}

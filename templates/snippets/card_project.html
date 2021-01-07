@@ -1,3 +1,6 @@
-<div>
-    <img src="{{ article.image.url }}" alt="">
+<div style="display: block; text-align: center;">
+    <img src="{{ project.image.url }}" alt="">
+    <h6 class="mt-2" style="font-family: 'NanumSquareRoundR'">
+        {{ project.title | truncatechars:8 }}
+    </h6>
 </div>

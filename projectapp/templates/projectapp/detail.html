@@ -3,49 +3,37 @@
 {% block content %}
 
     <div>
-        <div style = 'text-align: center; max-width: 500px; margin: 4rem auto;'>
+        <div style = 'text-align: center; max-width: 500px; margin: 4rem auto 1.5rem auto;'>
 
-
-            {% if target_user.profile %}
-            <img src="{{ target_user.profile.image.url }}" alt="" style="height: 10rem; width: 10rem; border-radius: 12rem; margin-bottom: 2rem;">
-            <h2 style="font-family: 'NanumSquareRoundR'">
-                {{ target_user.profile.nickname }}
-                {% if target_user == user %}
-                <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
-                    edit
-                </a>
-                {% endif %}
+            <img src="{{ target_project.image.url }}" alt=""
+                 style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem;">
+            <h2 style="font-family: 'NanumSquareB'">
+                {{ target_project.title }}
             </h2>
-            <h5 style="margin-bottom:3rem;">
-                {{ target_user.profile.message }}
+            <h5>
+                {{ target_project.description }}
             </h5>
+        </div>
+
+
+        <div class="text-center mb-5">
+            {% if user.is_authenticated %}
+                {% if not subscription %}
+            <a href = "{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                class="btn btn-primary rounded-pill px-4">
+                Subscribe
+            </a>
             {% else %}
-                {% if target_user == user %}
-                <a href="{% url 'profileapp:create' %}">
-                    <h2 style="font-family: 'NanumSquareRoundR'">
-                    Create Profile
-                    </h2>
-                </a>
-                {% endif %}
-            <h2>
-                Please make your profile.
-            </h2>
-            {% endif %}
-
-
-            {% if target_user == user %}
-            <a href = "{% url 'accountapp:update' pk=target_user.pk %}">
-                <p>
-                    Change Info
-                </p>
+            <a href = "{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                class="btn btn-dark rounded-pill px-4">
+                Unsubscribe
             </a>
-            <a href = "{% url 'accountapp:delete' pk=target_user.pk %}">
-                <p>
-                    Delete Account
-                </p>
-            </a>
-            {% endif %}
+                 {% endif %}
+        {% endif %}
+        </div>
 
+        <div>
+          {% include 'snippets/list_fragment.html' with article_list=object_list %}
         </div>
     </div>
 

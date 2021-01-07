@@ -1,15 +1,39 @@
-.jintonic_logo{
+.jintonic_logo {
     font-family: 'Lobster', cursive;
 }
 
-.jintonic_footer_button{
-    font-size: .6rem;
+.jintonic_footer_button {
+    text-align: center; font-size: .9rem;
 }
 
-.jintonic_footer{
+.jintonic_footer {
     text-align: center; margin-top: 2rem;
 }
 
-.jintonic_header{
+.jintonic_header {
     text-align: center; margin: 2rem 0
+}
+
+@media screen and (max-width:500px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.jintonic_header_nav {
+    margin: 0 0.5rem;
+}
+
+.jintonic_header_navbar {
+    margin: 1rem 0;
 }
