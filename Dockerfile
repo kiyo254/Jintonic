@@ -14,8 +14,6 @@ RUN pip install gunicorn
 
 RUN pip install mysqlclient
 
-RUN echo "SECRET_KEY=6^fnhe0l4==bj@%_3idfl_gta9u7txw!8q98w$qbrdp0*d3htn" > .env
-
 RUN python manage.py collectstatic
 
 EXPOSE 8000
