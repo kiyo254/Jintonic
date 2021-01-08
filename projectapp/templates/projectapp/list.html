@@ -36,7 +36,7 @@
     <script src="{% static 'js/magicgrid.js' %}"> </script>
     {% else %}
       <div style = "text-align: center" >
-        <h1>No Projects YET!</h1>
+        <h1>No Moments YET!</h1>
       </div>
       </div>
     {% endif %}
@@ -46,7 +46,7 @@
     {% if user.is_authenticated %}
     <div style="text-align:center;">
       <a href="{% url 'projectapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
-        Create Project
+        Create Moment
       </a>
     </div>
     {% endif %}

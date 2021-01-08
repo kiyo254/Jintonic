@@ -1,13 +1,17 @@
     <div class = "jintonic_header ">
         <div>
-            <h1 class = "jintonic_logo" >Jin_Tonic</h1>
+            <h1 class = "jintonic_logo" >
+                <a href="{% url 'articleapp:list' %}" class="jintonic_header_nav">
+                    Kyum&Sol
+                </a>
+            </h1>
         </div>
         <div class="jintonic_header_navbar">
             <a href="{% url 'articleapp:list' %}" class="jintonic_header_nav">
-                <span>Articles</span>
+                <span>Memories</span>
             </a>
             <a href="{% url 'projectapp:list' %}" class="jintonic_header_nav">
-                <span>Projects</span>
+                <span>Moments</span>
             </a>
 
             {% if not user.is_authenticated %}
@@ -15,17 +19,17 @@
                 <span>Sign Up</span>
             </a>
             <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="jintonic_header_nav">
-                <span>log In</span>
+                <span>Sign In</span>
             </a>
             {% else %}
             <a href="{% url 'subscribeapp:list' %}" class="jintonic_header_nav">
-                <span>Subscription</span>
+                <span>Album</span>
             </a>
             <a href="{% url 'accountapp:detail' pk=user.pk %}" class="jintonic_header_nav">
                 <span>My Page</span>
             </a>
             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="jintonic_header_nav">
-                <span>log Out</span>
+                <span>Sign Out</span>
             </a>
             {% endif %}
         </div>

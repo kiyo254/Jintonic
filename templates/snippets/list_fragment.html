@@ -25,8 +25,8 @@
       width: 100%;
       border-radius: 1rem;
       }
-
 </style>
+
     {% if article_list %}
     <div class="container">
       {% for article in article_list %}
@@ -38,14 +38,8 @@
     <script src="{% static 'js/magicgrid.js' %}"> </script>
     {% else %}
       <div style = "text-align: center" >
-        <h1>No Articles YET!</h1>
+        <h1>No Contents YET!</h1>
       </div>
     {% endif %}
 
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
-
-    <div style="text-align:center;">
-      <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
-        Create Article
-      </a>
-    </div>
